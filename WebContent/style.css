@@ -17,19 +17,30 @@
 
 }
 
+/**headerの設定**/
+.header li {
+	display: inline-block;
+	margin: 20px;
+}
+
 /****** ヘッダー */
-#header {
-	/* 高さ */
-	height: 40px;
-	/* 内部余白 */
-	padding: 5px 10px 10px 20px;
-	/* フォントサイズ */
-	font-size: 150%;
+.header {
 	/* 文字色 */
 	color: #eee;
 	/* 背景色 */
-	background: #000;
-	float:left;
+	background-color: blue;
+}
+
+/**フッター設定**/
+footer{
+    width: 100%;
+    background-color: pink;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
 }
 
 /****** メインコンテンツ */
