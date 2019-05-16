@@ -18,14 +18,23 @@
 			<li><p>userName</p></li>
 		</ul>
 	</div>
-	<div>
-		<p id="page-title">蔵書検索</p>
-	</div>
 	<div class="main">
+
+		<!-- ページタイトル -->
+		<div>
+			<p id="page-title">蔵書検索</p>
+		</div>
+
+		<!-- 検索タブ表示 -->
+		<div>
 		<input type="search" size="40" placeholder="タイトルを入力してください">
 		<button id="js-btn-search">検索</button>
-		<table border=1>
-			<tr>
+		</div>
+
+		<!-- 検索結果表示 -->
+		<div id=searchedList>
+			<!-- <table border=1>
+	  		<tr>
 				<th>タイトル</th>
 				<th>著者名</th>
 				<th>出版社</th>
@@ -47,7 +56,9 @@
 				<td><input type="button" value="貸出"></td>
 				<td><input type="button" value="詳細"></td>
 			</tr>
-		</table>
+			</table>-->
+
+		</div>
 	</div>
 
 </body>
