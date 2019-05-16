@@ -1,6 +1,6 @@
 'use strict';
 
-var rootUrl = "/java_s04/api/v1.1/expenses";
+var rootUrl = "/java_s04/api/v1.1/rentals";
 
 findAll();
 

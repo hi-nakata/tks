@@ -16,9 +16,9 @@ import javax.xml.bind.ValidationException;
 /**
  * 経費関連のサービス実装。
  */
-@Path("expenses")
-public class ExpenseResource {
-	private final ExpenseDAO dao = new ExpenseDAO();
+@Path("rentals")
+public class RentalResource {
+	private final RentalDAO dao = new RentalDAO();
 
 	/**
 	 * 一覧用に経費情報を全件取得する。
