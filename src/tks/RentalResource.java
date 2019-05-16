@@ -26,8 +26,8 @@ public class RentalResource {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Expense> findAll() {
-		return dao.findAll();
+	public List<RentalCard> findAll() {
+		return dao.findById();
 	}
 
 	/**

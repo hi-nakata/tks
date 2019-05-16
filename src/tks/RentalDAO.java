@@ -8,8 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import tks.RentalCard;
-
 /**
  * 経費データを扱うDAO
  */
@@ -28,8 +26,8 @@ public class RentalDAO {
 	 *
 	 * @return DBに登録されている経費データ全件を収めたリスト。途中でエラーが発生した場合は空のリストを返す。
 	 */
-	public List<Expense> findAll() {
-		List<Expense> result = new ArrayList<>();
+	public List<RentalCard> findAll() {
+		List<RentalCard> result = new ArrayList<>();
 
 		Connection connection = ConnectionProvider.getConnection();
 		if (connection == null) {
@@ -57,8 +55,8 @@ public class RentalDAO {
 	 * @param id 検索対象のID
 	 * @return 検索できた場合は検索結果データを収めたExpenseインスタンス。検索に失敗した場合はnullが返る。
 	 */
-	public Expense findById(int id) {
-		Expense result = null;
+	public RentalCard findById(int id) {
+		RentalCard result = null;
 
 		Connection connection = ConnectionProvider.getConnection();
 		if (connection == null) {
@@ -87,35 +85,35 @@ public class RentalDAO {
 	 * 登録されたオブジェクトにはDB上のIDが上書きされる。
 	 * 何らかの理由で登録に失敗した場合、IDがセットされない状態（=0）で返却される。
 	 *
-	 * @param expense 登録対象オブジェクト
+	 * @param rental 登録対象オブジェクト
 	 * @return DB上のIDがセットされたオブジェクト
 	 */
-	public Expense create(Expense expense) {
+	public RentalCard create(RentalCard rental) {
 		Connection connection = ConnectionProvider.getConnection();
 		if (connection == null) {
-			return expense;
+			return rental;
 		}
 
 		try (PreparedStatement statement = connection.prepareStatement(INSERT_QUERY, new String[] { "REQ_ID" });) {
 			// INSERT実行
-			statement.setString(1, expense.getDate());
-			statement.setString(2, expense.getName());
-			statement.setString(3, expense.getTitle());
-			statement.setInt(4, expense.getMoney());
+			statement.setString(1, rental.getDate());
+			statement.setString(2, rental.getName());
+			statement.setString(3, rental.getTitle());
+			statement.setInt(4, rental.getMoney());
 			statement.executeUpdate();
 
 			// INSERTできたらKEYを取得
 			ResultSet rs = statement.getGeneratedKeys();
 			rs.next();
 			int id = rs.getInt(1);
-			expense.setId(id);
+			rental.setId(id);
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
 			ConnectionProvider.close(connection);
 		}
 
-		return expense;
+		return rental;
 	}
 
 	/**

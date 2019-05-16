@@ -2,9 +2,9 @@
 
 var rootUrl = "/java_s04/api/v1.1/rentals";
 
-findAll();
+findById();
 
-$('#saveExpense').click(function() {
+/** $('#saveExpense').click(function() {
 	var name = $('#name').val();
 	if (name === '') {
 		$('.error').text('名前は必須入力です。');
@@ -19,13 +19,13 @@ $('#saveExpense').click(function() {
 	else
 		updateExpense(id);
 	return false;
-})
+}) */
 
-$('#newExpense').click(function() {
+/** $('#newExpense').click(function() {
 	renderDetails({});
-});
+});  */
 
-function findAll(){
+ /** function findAll(){
 	console.log('findAll start.')
 	$.ajax({
 		type: "GET",
@@ -33,7 +33,7 @@ function findAll(){
 		dataType: "json",
 		success: renderTable
 	});
-}
+}  */
 
 function findById(id) {
 	console.log('findByID start - id:'+id);
@@ -43,12 +43,12 @@ function findById(id) {
 		dataType: "json",
 		success: function(data) {
 			console.log('findById success: ' + data.name);
-			renderDetails(data)
+			renderTable(data)
 		}
 	});
 }
 
-function addExpense() {
+/** function addExpense() {
 	console.log('addExpense start');
 	$.ajax({
 		type: "POST",
@@ -65,9 +65,9 @@ function addExpense() {
 			alert('経費データの追加に失敗しました');
 		}
 	})
-}
+}  */
 
-function updateExpense(id) {
+/** function updateExpense(id) {
 	console.log('updateExpense start');
 	$.ajax({
 		type: "PUT",
@@ -83,10 +83,10 @@ function updateExpense(id) {
 			alert('経費データの更新に失敗しました');
 		}
 	})
-}
+}  */
 
 
-function deleteById(id) {
+/** function deleteById(id) {
 	console.log('delete start - id:'+id);
 	$.ajax({
 		type: "DELETE",
@@ -103,15 +103,16 @@ function deleteById(id) {
 			alert('データの通信に失敗');
 		}
 	});
-}
+}  */
+
 
 function renderTable(data) {
-	var headerRow = '<tr><th>ID</th><th>申請日</th><th>申請者</th><th>タイトル</th><th>金額</th></tr>';
+	var headerRow = '<tr><th>ID</th><th>タイトル</th><th>返却予定日</th><th>ステータス</th></tr>';
 
-	$('#expenses').children().remove();
+	$('#rentals').children().remove();
 
 	if (data.length === 0) {
-		$('#expenses').append('<p>現在データが存在していません。</p>')
+		$('#rentals').append('<p>現在借りている本はありません。</p>')
 	} else {
 		var table = $('<table>').attr('border', 1);
 		table.append(headerRow);
@@ -136,7 +137,8 @@ function renderTable(data) {
 
 }
 
-function renderDetails(expense) {
+
+/** function renderDetails(expense) {
 	$('.error').text('');
 	$('#expenseId').val(expense.id);
 	$('#date').val(expense.date);
@@ -144,6 +146,8 @@ function renderDetails(expense) {
 	$('#title').val(expense.title);
 	$('#money').val(expense.money);
 }
+*/
+
 
 function formToJSON() {
 	var expenseId = $('#expenseId').val();
