@@ -1,5 +1,4 @@
-var rootUrl = "/java_s04/api/v1.1/logins";
-//var rootUrl = "/java_s04/api/v1.1/LoginServlet";
+var rootUrl = "app/tks/accounts";
 
 function login(){
 	var fd = new FormData(document.getElementById("loginForm"));
